@@ -15,22 +15,13 @@ export default function App() {
   const { context, updateContext } = useYAMSIContext();
   const [currentScreen, setCurrentScreen] = useState<Screen>('welcome');
   const [businessType, setBusinessType] = useState<string | null>(null);
+  const [isReady, setIsReady] = useState(false);
 
   // Initialize API with current context
   useEffect(() => {
     initializeAPI(context);
+    setIsReady(true);
   }, [context]);
-
-  // Determine which screen to show
-  useEffect(() => {
-    if (!context.business_id) {
-      setCurrentScreen('workspace');
-    } else if (!context.branch_id) {
-      setCurrentScreen('branch');
-    } else {
-      setCurrentScreen('dashboard');
-    }
-  }, [context.business_id, context.branch_id]);
 
   const handleSignIn = () => {
     setCurrentScreen('workspace');
@@ -78,6 +69,17 @@ export default function App() {
       setCurrentScreen('dashboard');
     }
   };
+
+  if (!isReady) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading YAMSI...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-white">
