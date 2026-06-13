@@ -6,11 +6,11 @@ interface WelcomeProps {
 
 export function Welcome({ onSignIn }: WelcomeProps) {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-yamsi-50 to-yamsi-100 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center p-4">
       <div className="max-w-md w-full">
         <div className="bg-white rounded-2xl shadow-xl p-8 text-center">
           <div className="mb-6">
-            <div className="w-16 h-16 bg-yamsi-600 rounded-full flex items-center justify-center mx-auto">
+            <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto">
               <span className="text-2xl font-bold text-white">Y</span>
             </div>
           </div>
@@ -22,8 +22,8 @@ export function Welcome({ onSignIn }: WelcomeProps) {
 
           <div className="space-y-4 mb-8">
             <div className="flex items-start gap-3">
-              <div className="w-6 h-6 rounded-full bg-yamsi-100 flex items-center justify-center flex-shrink-0 mt-1">
-                <span className="text-yamsi-600 text-sm font-bold">✓</span>
+              <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-1">
+                <span className="text-blue-600 text-sm font-bold">✓</span>
               </div>
               <div className="text-left">
                 <p className="font-medium text-gray-900">Universal Business OS</p>
@@ -32,8 +32,8 @@ export function Welcome({ onSignIn }: WelcomeProps) {
             </div>
 
             <div className="flex items-start gap-3">
-              <div className="w-6 h-6 rounded-full bg-yamsi-100 flex items-center justify-center flex-shrink-0 mt-1">
-                <span className="text-yamsi-600 text-sm font-bold">✓</span>
+              <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-1">
+                <span className="text-blue-600 text-sm font-bold">✓</span>
               </div>
               <div className="text-left">
                 <p className="font-medium text-gray-900">AI-Powered Insights</p>
@@ -42,8 +42,8 @@ export function Welcome({ onSignIn }: WelcomeProps) {
             </div>
 
             <div className="flex items-start gap-3">
-              <div className="w-6 h-6 rounded-full bg-yamsi-100 flex items-center justify-center flex-shrink-0 mt-1">
-                <span className="text-yamsi-600 text-sm font-bold">✓</span>
+              <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-1">
+                <span className="text-blue-600 text-sm font-bold">✓</span>
               </div>
               <div className="text-left">
                 <p className="font-medium text-gray-900">Multi-Tenant Safe</p>
@@ -54,7 +54,7 @@ export function Welcome({ onSignIn }: WelcomeProps) {
 
           <button
             onClick={onSignIn}
-            className="btn-primary w-full"
+            className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
           >
             Sign In
           </button>
