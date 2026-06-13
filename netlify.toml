@@ -1,0 +1,14 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  VITE_YAMSI_API_URL = "https://yamsi-server.onrender.com"
+  VITE_YAMSI_API_KEY = "R6nPy5vP9qMnT5wZjC9rZ4fHfA6dCgZuZ2iNbNrXBwYwavj2"
+  VITE_YAMSI_TENANT_ID = "00000000-0000-0000-0000-000000000001"
+  VITE_YAMSI_USER_ID = "victor"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
