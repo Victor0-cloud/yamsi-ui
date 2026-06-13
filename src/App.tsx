@@ -15,12 +15,14 @@ export default function App() {
   const { context, updateContext } = useYAMSIContext();
   const [currentScreen, setCurrentScreen] = useState<Screen>('welcome');
   const [businessType, setBusinessType] = useState<string | null>(null);
-  const [isReady, setIsReady] = useState(false);
 
   // Initialize API with current context
   useEffect(() => {
-    initializeAPI(context);
-    setIsReady(true);
+    try {
+      initializeAPI(context);
+    } catch (err) {
+      console.error('Failed to initialize API:', err);
+    }
   }, [context]);
 
   const handleSignIn = () => {
@@ -34,14 +36,17 @@ export default function App() {
     try {
       const api = getAPI();
       const response = await api.getBusinessType();
-      setBusinessType(response.business_type);
+      setBusinessType((response as any).business_type);
+      setCurrentScreen('branch');
     } catch (err) {
       console.error('Failed to get business type:', err);
+      setCurrentScreen('branch');
     }
   };
 
   const handleSelectBranch = async (branchId: string) => {
     await updateContext({ branch_id: branchId });
+    setCurrentScreen('dashboard');
   };
 
   const handleNavigate = (screen: Screen) => {
@@ -69,17 +74,6 @@ export default function App() {
       setCurrentScreen('dashboard');
     }
   };
-
-  if (!isReady) {
-    return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading YAMSI...</p>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-white">
